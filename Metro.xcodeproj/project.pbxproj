@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49E4263D24B0E8C0009DF778 /* Metro WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		49E4264324B0E8C0009DF778 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E4264124B0E8C0009DF778 /* Interface.storyboard */; };
+		49E4264524B0E8C3009DF778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E4264424B0E8C3009DF778 /* Assets.xcassets */; };
+		49E4264C24B0E8C3009DF778 /* Metro WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 49E4264B24B0E8C3009DF778 /* Metro WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		49E4265124B0E8C3009DF778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4265024B0E8C3009DF778 /* ContentView.swift */; };
+		49E4265324B0E8C3009DF778 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4265224B0E8C3009DF778 /* HostingController.swift */; };
+		49E4265524B0E8C3009DF778 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4265424B0E8C3009DF778 /* ExtensionDelegate.swift */; };
+		49E4265724B0E8C3009DF778 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4265624B0E8C3009DF778 /* NotificationController.swift */; };
+		49E4265924B0E8C3009DF778 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4265824B0E8C3009DF778 /* NotificationView.swift */; };
+		49E4265B24B0E8C3009DF778 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4265A24B0E8C3009DF778 /* ComplicationController.swift */; };
+		49E4265D24B0E8C4009DF778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E4265C24B0E8C4009DF778 /* Assets.xcassets */; };
+		49E4266024B0E8C4009DF778 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E4265F24B0E8C4009DF778 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49E4263E24B0E8C0009DF778 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49E4263224B0E8C0009DF778 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49E4263B24B0E8C0009DF778;
+			remoteInfo = "Metro WatchKit App";
+		};
+		49E4264D24B0E8C3009DF778 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49E4263224B0E8C0009DF778 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49E4264A24B0E8C3009DF778;
+			remoteInfo = "Metro WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		49E4266824B0E8C4009DF778 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				49E4264C24B0E8C3009DF778 /* Metro WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E4266C24B0E8C4009DF778 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				49E4263D24B0E8C0009DF778 /* Metro WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		49E4263824B0E8C0009DF778 /* Metro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metro WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E4264224B0E8C0009DF778 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		49E4264424B0E8C3009DF778 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49E4264624B0E8C3009DF778 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E4264B24B0E8C3009DF778 /* Metro WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Metro WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E4265024B0E8C3009DF778 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		49E4265224B0E8C3009DF778 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		49E4265424B0E8C3009DF778 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		49E4265624B0E8C3009DF778 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		49E4265824B0E8C3009DF778 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		49E4265A24B0E8C3009DF778 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		49E4265C24B0E8C4009DF778 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49E4265F24B0E8C4009DF778 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		49E4266124B0E8C4009DF778 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E4266224B0E8C4009DF778 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49E4264824B0E8C3009DF778 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49E4263124B0E8C0009DF778 = {
+			isa = PBXGroup;
+			children = (
+				49E4264024B0E8C0009DF778 /* Metro WatchKit App */,
+				49E4264F24B0E8C3009DF778 /* Metro WatchKit Extension */,
+				49E4263924B0E8C0009DF778 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49E4263924B0E8C0009DF778 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49E4263824B0E8C0009DF778 /* Metro.app */,
+				49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */,
+				49E4264B24B0E8C3009DF778 /* Metro WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49E4264024B0E8C0009DF778 /* Metro WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				49E4264124B0E8C0009DF778 /* Interface.storyboard */,
+				49E4264424B0E8C3009DF778 /* Assets.xcassets */,
+				49E4264624B0E8C3009DF778 /* Info.plist */,
+			);
+			path = "Metro WatchKit App";
+			sourceTree = "<group>";
+		};
+		49E4264F24B0E8C3009DF778 /* Metro WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				49E4265024B0E8C3009DF778 /* ContentView.swift */,
+				49E4265224B0E8C3009DF778 /* HostingController.swift */,
+				49E4265424B0E8C3009DF778 /* ExtensionDelegate.swift */,
+				49E4265624B0E8C3009DF778 /* NotificationController.swift */,
+				49E4265824B0E8C3009DF778 /* NotificationView.swift */,
+				49E4265A24B0E8C3009DF778 /* ComplicationController.swift */,
+				49E4265C24B0E8C4009DF778 /* Assets.xcassets */,
+				49E4266124B0E8C4009DF778 /* Info.plist */,
+				49E4266224B0E8C4009DF778 /* PushNotificationPayload.apns */,
+				49E4265E24B0E8C4009DF778 /* Preview Content */,
+			);
+			path = "Metro WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		49E4265E24B0E8C4009DF778 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				49E4265F24B0E8C4009DF778 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49E4263724B0E8C0009DF778 /* Metro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E4266D24B0E8C4009DF778 /* Build configuration list for PBXNativeTarget "Metro" */;
+			buildPhases = (
+				49E4263624B0E8C0009DF778 /* Resources */,
+				49E4266C24B0E8C4009DF778 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49E4263F24B0E8C0009DF778 /* PBXTargetDependency */,
+			);
+			name = Metro;
+			productName = Metro;
+			productReference = 49E4263824B0E8C0009DF778 /* Metro.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		49E4263B24B0E8C0009DF778 /* Metro WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E4266924B0E8C4009DF778 /* Build configuration list for PBXNativeTarget "Metro WatchKit App" */;
+			buildPhases = (
+				49E4263A24B0E8C0009DF778 /* Resources */,
+				49E4266824B0E8C4009DF778 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49E4264E24B0E8C3009DF778 /* PBXTargetDependency */,
+			);
+			name = "Metro WatchKit App";
+			productName = "Metro WatchKit App";
+			productReference = 49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		49E4264A24B0E8C3009DF778 /* Metro WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49E4266524B0E8C4009DF778 /* Build configuration list for PBXNativeTarget "Metro WatchKit Extension" */;
+			buildPhases = (
+				49E4264724B0E8C3009DF778 /* Sources */,
+				49E4264824B0E8C3009DF778 /* Frameworks */,
+				49E4264924B0E8C3009DF778 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Metro WatchKit Extension";
+			productName = "Metro WatchKit Extension";
+			productReference = 49E4264B24B0E8C3009DF778 /* Metro WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49E4263224B0E8C0009DF778 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "John Forde";
+				TargetAttributes = {
+					49E4263724B0E8C0009DF778 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					49E4263B24B0E8C0009DF778 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					49E4264A24B0E8C3009DF778 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 49E4263524B0E8C0009DF778 /* Build configuration list for PBXProject "Metro" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49E4263124B0E8C0009DF778;
+			productRefGroup = 49E4263924B0E8C0009DF778 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49E4263724B0E8C0009DF778 /* Metro */,
+				49E4263B24B0E8C0009DF778 /* Metro WatchKit App */,
+				49E4264A24B0E8C3009DF778 /* Metro WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49E4263624B0E8C0009DF778 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E4263A24B0E8C0009DF778 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E4264524B0E8C3009DF778 /* Assets.xcassets in Resources */,
+				49E4264324B0E8C0009DF778 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49E4264924B0E8C3009DF778 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E4266024B0E8C4009DF778 /* Preview Assets.xcassets in Resources */,
+				49E4265D24B0E8C4009DF778 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49E4264724B0E8C3009DF778 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49E4265324B0E8C3009DF778 /* HostingController.swift in Sources */,
+				49E4265124B0E8C3009DF778 /* ContentView.swift in Sources */,
+				49E4265724B0E8C3009DF778 /* NotificationController.swift in Sources */,
+				49E4265524B0E8C3009DF778 /* ExtensionDelegate.swift in Sources */,
+				49E4265924B0E8C3009DF778 /* NotificationView.swift in Sources */,
+				49E4265B24B0E8C3009DF778 /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49E4263F24B0E8C0009DF778 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49E4263B24B0E8C0009DF778 /* Metro WatchKit App */;
+			targetProxy = 49E4263E24B0E8C0009DF778 /* PBXContainerItemProxy */;
+		};
+		49E4264E24B0E8C3009DF778 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49E4264A24B0E8C3009DF778 /* Metro WatchKit Extension */;
+			targetProxy = 49E4264D24B0E8C3009DF778 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		49E4264124B0E8C0009DF778 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49E4264224B0E8C0009DF778 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49E4266324B0E8C4009DF778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		49E4266424B0E8C4009DF778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49E4266624B0E8C4009DF778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Metro WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 322WP4362D;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Metro WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordee.Metro.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Debug;
+		};
+		49E4266724B0E8C4009DF778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Metro WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 322WP4362D;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Metro WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordee.Metro.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Release;
+		};
+		49E4266A24B0E8C4009DF778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 322WP4362D;
+				IBSC_MODULE = Metro_WatchKit_Extension;
+				INFOPLIST_FILE = "Metro WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordee.Metro.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Debug;
+		};
+		49E4266B24B0E8C4009DF778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 322WP4362D;
+				IBSC_MODULE = Metro_WatchKit_Extension;
+				INFOPLIST_FILE = "Metro WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordee.Metro.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+			};
+			name = Release;
+		};
+		49E4266E24B0E8C4009DF778 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 322WP4362D;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordee.Metro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		49E4266F24B0E8C4009DF778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 322WP4362D;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fordee.Metro;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49E4263524B0E8C0009DF778 /* Build configuration list for PBXProject "Metro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E4266324B0E8C4009DF778 /* Debug */,
+				49E4266424B0E8C4009DF778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49E4266524B0E8C4009DF778 /* Build configuration list for PBXNativeTarget "Metro WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E4266624B0E8C4009DF778 /* Debug */,
+				49E4266724B0E8C4009DF778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49E4266924B0E8C4009DF778 /* Build configuration list for PBXNativeTarget "Metro WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E4266A24B0E8C4009DF778 /* Debug */,
+				49E4266B24B0E8C4009DF778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49E4266D24B0E8C4009DF778 /* Build configuration list for PBXNativeTarget "Metro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E4266E24B0E8C4009DF778 /* Debug */,
+				49E4266F24B0E8C4009DF778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49E4263224B0E8C0009DF778 /* Project object */;
+}
