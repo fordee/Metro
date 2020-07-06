@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49967A0F24B390FE006675DA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49967A0E24B390FE006675DA /* SettingsView.swift */; };
 		49E4263D24B0E8C0009DF778 /* Metro WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49E4264324B0E8C0009DF778 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E4264124B0E8C0009DF778 /* Interface.storyboard */; };
 		49E4264524B0E8C3009DF778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E4264424B0E8C3009DF778 /* Assets.xcassets */; };
@@ -19,6 +20,11 @@
 		49E4265B24B0E8C3009DF778 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4265A24B0E8C3009DF778 /* ComplicationController.swift */; };
 		49E4265D24B0E8C4009DF778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E4265C24B0E8C4009DF778 /* Assets.xcassets */; };
 		49E4266024B0E8C4009DF778 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E4265F24B0E8C4009DF778 /* Preview Assets.xcassets */; };
+		49E4267424B0E944009DF778 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4267324B0E944009DF778 /* Helpers.swift */; };
+		49E4267624B0E986009DF778 /* DepartureDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4267524B0E986009DF778 /* DepartureDetails.swift */; };
+		49E4267824B0E9B1009DF778 /* MetroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4267724B0E9B1009DF778 /* MetroData.swift */; };
+		49E4267A24B0E9E6009DF778 /* TimetableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4267924B0E9E6009DF778 /* TimetableView.swift */; };
+		49E4267C24B0EA0C009DF778 /* ServiceRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4267B24B0EA0C009DF778 /* ServiceRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		49967A0E24B390FE006675DA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		49E4263824B0E8C0009DF778 /* Metro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metro WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E4264224B0E8C0009DF778 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -80,6 +87,11 @@
 		49E4265F24B0E8C4009DF778 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49E4266124B0E8C4009DF778 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49E4266224B0E8C4009DF778 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		49E4267324B0E944009DF778 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		49E4267524B0E986009DF778 /* DepartureDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureDetails.swift; sourceTree = "<group>"; };
+		49E4267724B0E9B1009DF778 /* MetroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroData.swift; sourceTree = "<group>"; };
+		49E4267924B0E9E6009DF778 /* TimetableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableView.swift; sourceTree = "<group>"; };
+		49E4267B24B0EA0C009DF778 /* ServiceRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +108,9 @@
 		49E4263124B0E8C0009DF778 = {
 			isa = PBXGroup;
 			children = (
+				49E4267224B0E923009DF778 /* Helpers */,
+				49E4267124B0E916009DF778 /* Models */,
+				49E4267024B0E8FC009DF778 /* Views */,
 				49E4264024B0E8C0009DF778 /* Metro WatchKit App */,
 				49E4264F24B0E8C3009DF778 /* Metro WatchKit Extension */,
 				49E4263924B0E8C0009DF778 /* Products */,
@@ -125,7 +140,6 @@
 		49E4264F24B0E8C3009DF778 /* Metro WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				49E4265024B0E8C3009DF778 /* ContentView.swift */,
 				49E4265224B0E8C3009DF778 /* HostingController.swift */,
 				49E4265424B0E8C3009DF778 /* ExtensionDelegate.swift */,
 				49E4265624B0E8C3009DF778 /* NotificationController.swift */,
@@ -145,6 +159,34 @@
 				49E4265F24B0E8C4009DF778 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		49E4267024B0E8FC009DF778 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49E4265024B0E8C3009DF778 /* ContentView.swift */,
+				49E4267924B0E9E6009DF778 /* TimetableView.swift */,
+				49E4267B24B0EA0C009DF778 /* ServiceRowView.swift */,
+				49967A0E24B390FE006675DA /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49E4267124B0E916009DF778 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49E4267524B0E986009DF778 /* DepartureDetails.swift */,
+				49E4267724B0E9B1009DF778 /* MetroData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		49E4267224B0E923009DF778 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				49E4267324B0E944009DF778 /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,10 +317,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E4267A24B0E9E6009DF778 /* TimetableView.swift in Sources */,
 				49E4265324B0E8C3009DF778 /* HostingController.swift in Sources */,
+				49E4267424B0E944009DF778 /* Helpers.swift in Sources */,
 				49E4265124B0E8C3009DF778 /* ContentView.swift in Sources */,
+				49E4267C24B0EA0C009DF778 /* ServiceRowView.swift in Sources */,
+				49E4267824B0E9B1009DF778 /* MetroData.swift in Sources */,
+				49E4267624B0E986009DF778 /* DepartureDetails.swift in Sources */,
 				49E4265724B0E8C3009DF778 /* NotificationController.swift in Sources */,
 				49E4265524B0E8C3009DF778 /* ExtensionDelegate.swift in Sources */,
+				49967A0F24B390FE006675DA /* SettingsView.swift in Sources */,
 				49E4265924B0E8C3009DF778 /* NotificationView.swift in Sources */,
 				49E4265B24B0E8C3009DF778 /* ComplicationController.swift in Sources */,
 			);
@@ -443,7 +491,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -467,7 +515,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -486,7 +534,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -505,7 +553,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
