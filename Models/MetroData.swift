@@ -75,19 +75,27 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
   @Published public var fetchState: FetchState = FetchState.fetching
   @Published public var request: AnyCancellable?
 
-  private var displayAllStops = false
-
-  let stops: [MetStop] = [
-    MetStop(stopNumber: 3546, stopName: "Newlands Road"),
-    MetStop(stopNumber: 5016, stopName: "Wellington Stn"),
-    MetStop(stopNumber: 5014, stopName: "Lambton Quay"),
-    MetStop(stopNumber: 5012, stopName: "Farmers"),
-    MetStop(stopNumber: 5010, stopName: "Cable Car Ln"),
-    MetStop(stopNumber: 5008, stopName: "Willis St"),
+  @Published public var stops: [MetStop] = [
+    MetStop(stopNumber: "3546", stopName: "Newlands Road"),
+    MetStop(stopNumber: "5016", stopName: "Wellington Stn"),
+    MetStop(stopNumber: "5014", stopName: "Lambton Quay"),
+    MetStop(stopNumber: "5012", stopName: "Farmers"),
+    MetStop(stopNumber: "5010", stopName: "Cable Car Ln"),
+    MetStop(stopNumber: "5008", stopName: "Willis St"),
   ]
 
-  let favoriteServices = ["52", "56", "57", "58"]
+  private var displayAllStops = false
 
+  func deleteStop(at indices: IndexSet) {
+    indices.forEach { stops.remove(at: $0) }
+  }
+
+  let favoriteServices: [Route] = [
+    Route(routeId: 520, agencyId: "MNM", routeShortName: "52", routeLongName: "Johnsonville - Newlands - Wellington", routeType:   3, routeColor: "6cace4", routeTextColor: "0"),
+    Route(routeId: 560, agencyId: "MNM", routeShortName: "56", routeLongName: "Johnsonville - Paparangi - Wellington", routeType:   3, routeColor: "636466", routeTextColor: "ffffff"),
+    Route(routeId: 570, agencyId: "MNM", routeShortName: "57", routeLongName: "Woodridge - Wellington", routeType:   3, routeColor: "636466", routeTextColor: "ffffff"),
+    Route(routeId: 580, agencyId: "MNM", routeShortName: "58", routeLongName: "Newlands - Wellington", routeType:   3, routeColor: "636466", routeTextColor: "ffffff"),
+  ]
   // MARK: - Private Methods
 
   // The model's initializer. Do not call this method.
@@ -185,10 +193,10 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     }
   }
 
-  private func filterBy(serviceIDs: [String], services: [BusTrainService]) -> [BusTrainService] {
+  private func filterBy(serviceIDs: [Route], services: [BusTrainService]) -> [BusTrainService] {
     let filteredServices = services.filter {
       for serviceID in serviceIDs {
-        if $0.serviceID == serviceID {
+        if $0.serviceID == serviceID.routeShortName {
           return true
         }
       }
@@ -203,6 +211,8 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     updateSink.cancel()
   }
 }
+
+
 
 
 

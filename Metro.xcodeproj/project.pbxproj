@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49895FAF24B62E760093A195 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49895FAE24B62E760093A195 /* Route.swift */; };
+		49895FB124B638E80093A195 /* AvailableRoutesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49895FB024B638E80093A195 /* AvailableRoutesListView.swift */; };
 		49967A0F24B390FE006675DA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49967A0E24B390FE006675DA /* SettingsView.swift */; };
+		49967A1124B39CE4006675DA /* ListSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49967A1024B39CE4006675DA /* ListSelectView.swift */; };
+		49967A1324B4E639006675DA /* SelectStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49967A1224B4E639006675DA /* SelectStopView.swift */; };
+		49967A1524B4ED31006675DA /* StopsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49967A1424B4ED31006675DA /* StopsListView.swift */; };
+		49967A1724B4EE0A006675DA /* ServicesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49967A1624B4EE0A006675DA /* ServicesListView.swift */; };
 		49E4263D24B0E8C0009DF778 /* Metro WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49E4264324B0E8C0009DF778 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E4264124B0E8C0009DF778 /* Interface.storyboard */; };
 		49E4264524B0E8C3009DF778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E4264424B0E8C3009DF778 /* Assets.xcassets */; };
@@ -70,7 +76,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		49895FAE24B62E760093A195 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		49895FB024B638E80093A195 /* AvailableRoutesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableRoutesListView.swift; sourceTree = "<group>"; };
 		49967A0E24B390FE006675DA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		49967A1024B39CE4006675DA /* ListSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSelectView.swift; sourceTree = "<group>"; };
+		49967A1224B4E639006675DA /* SelectStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopView.swift; sourceTree = "<group>"; };
+		49967A1424B4ED31006675DA /* StopsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsListView.swift; sourceTree = "<group>"; };
+		49967A1624B4EE0A006675DA /* ServicesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListView.swift; sourceTree = "<group>"; };
 		49E4263824B0E8C0009DF778 /* Metro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E4263C24B0E8C0009DF778 /* Metro WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metro WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E4264224B0E8C0009DF778 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -168,6 +180,11 @@
 				49E4267924B0E9E6009DF778 /* TimetableView.swift */,
 				49E4267B24B0EA0C009DF778 /* ServiceRowView.swift */,
 				49967A0E24B390FE006675DA /* SettingsView.swift */,
+				49967A1024B39CE4006675DA /* ListSelectView.swift */,
+				49967A1224B4E639006675DA /* SelectStopView.swift */,
+				49967A1424B4ED31006675DA /* StopsListView.swift */,
+				49967A1624B4EE0A006675DA /* ServicesListView.swift */,
+				49895FB024B638E80093A195 /* AvailableRoutesListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +194,7 @@
 			children = (
 				49E4267524B0E986009DF778 /* DepartureDetails.swift */,
 				49E4267724B0E9B1009DF778 /* MetroData.swift */,
+				49895FAE24B62E760093A195 /* Route.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,12 +339,18 @@
 				49E4265324B0E8C3009DF778 /* HostingController.swift in Sources */,
 				49E4267424B0E944009DF778 /* Helpers.swift in Sources */,
 				49E4265124B0E8C3009DF778 /* ContentView.swift in Sources */,
+				49967A1324B4E639006675DA /* SelectStopView.swift in Sources */,
 				49E4267C24B0EA0C009DF778 /* ServiceRowView.swift in Sources */,
+				49895FB124B638E80093A195 /* AvailableRoutesListView.swift in Sources */,
 				49E4267824B0E9B1009DF778 /* MetroData.swift in Sources */,
 				49E4267624B0E986009DF778 /* DepartureDetails.swift in Sources */,
 				49E4265724B0E8C3009DF778 /* NotificationController.swift in Sources */,
+				49895FAF24B62E760093A195 /* Route.swift in Sources */,
 				49E4265524B0E8C3009DF778 /* ExtensionDelegate.swift in Sources */,
+				49967A1524B4ED31006675DA /* StopsListView.swift in Sources */,
 				49967A0F24B390FE006675DA /* SettingsView.swift in Sources */,
+				49967A1724B4EE0A006675DA /* ServicesListView.swift in Sources */,
+				49967A1124B39CE4006675DA /* ListSelectView.swift in Sources */,
 				49E4265924B0E8C3009DF778 /* NotificationView.swift in Sources */,
 				49E4265B24B0E8C3009DF778 /* ComplicationController.swift in Sources */,
 			);

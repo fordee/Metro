@@ -232,7 +232,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 
         // Create the template using the providers.
         //let template = CLKComplicationTemplateGraphicCircularView(CircularComplicationView())
-        let template = CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText(gaugeProvider: gaugeProvider, bottomTextProvider: CLKSimpleTextProvider(text: "mg"), center: mgCaffeineProvider)
+      let template = CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText(gaugeProvider: gaugeProvider, bottomTextProvider: CLKSimpleTextProvider(text: "mg"), centerTextProvider: mgCaffeineProvider)
         template.gaugeProvider = gaugeProvider
         //template.centerTextProvider = mgCaffeineProvider
         //template.bottomTextProvider = CLKSimpleTextProvider(text: "mg")

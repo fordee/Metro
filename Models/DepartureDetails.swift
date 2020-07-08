@@ -10,10 +10,10 @@ import Foundation
 import SwiftUI
 
 struct MetStop: Identifiable {
-  var id: Int {
+  var id: String {
     stopNumber
   }
-  let stopNumber: Int
+  let stopNumber: String
   let stopName: String
 }
 

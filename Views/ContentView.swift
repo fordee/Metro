@@ -20,7 +20,7 @@ struct ContentView: View {
     VStack {
       Picker(selection: $currentStop, label: EmptyView()) {
         ForEach(data.stops) { stop in
-          Text("\(stop.stopName)").tag("\(stop.stopNumber)")
+          Text("\(stop.stopName)").tag(stop.stopNumber)
         }
       }
       .frame(minHeight: 44, maxHeight: 44)
@@ -38,9 +38,7 @@ struct ContentView: View {
       }
       .padding(4)
       HStack {
-        Button {
-          print("Settings tapped.")
-        } label: {
+        NavigationLink(destination: SettingsView()) {
           Image(systemName: "gearshape")
             .imageScale(.large)
             .padding(.horizontal, 8)

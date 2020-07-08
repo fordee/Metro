@@ -40,7 +40,7 @@ struct TimetableView: View {
         HStack {
           Image(systemName: "arrow.counterclockwise.circle")
             .imageScale(.large)
-            .padding(.horizontal, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            .padding(.horizontal, 10)
           Text("Refresh")
         }
       }
