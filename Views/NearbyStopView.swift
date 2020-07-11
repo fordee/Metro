@@ -7,10 +7,35 @@
 //
 
 import SwiftUI
+import CoreLocation
+import Combine
 
 struct NearbyStopView: View {
+  @ObservedObject var locationManager = LocationManager()
+
+  @EnvironmentObject var metroData: MetroData
+
   var body: some View {
-    Text("Hello, World!")
+    VStack {
+      List {
+        ForEach(metroData.nearbyStops) { stop in
+          VStack(alignment: .leading) {
+            Text(stop.stopID)
+              .font(Font.system(size: 30.0, design: .rounded))
+              .fontWeight(.bold)
+              .padding(.vertical, 5)
+            Text(stop.name)
+              .font(Font.system(size: 15.0, design: .rounded))
+              .padding(.bottom, 8)
+          }
+        }
+
+      }
+    }
+    .onAppear {
+      metroData.fetchNearbyStops(for: (locationManager.userLatitude, locationManager.userLongitude))
+    }
+
   }
 }
 

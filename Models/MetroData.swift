@@ -102,7 +102,17 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
   }
 
   public func fetchNearbyStops(for location: (Double, Double)) {
-    // https://www.metlink.org.nz/api/v1/StopNearby/-41.3431194/174.7706202
+    // https://www.metlink.org.nz/api/v1/StopNearby/-41.23335086,+174.81820100 //-41.3431194/174.7706202
+    if let url = URL(string: "https://www.metlink.org.nz/api/v1/StopNearby/\(location.0)/\(location.1)") {
+      print("Location: \(location.0)/\(location.1)")
+      fetchState = .fetching
+      request = URLSession.shared.dataTaskPublisher(for: url)
+        .map(\.data)
+        .decode(type: [BusTrainStop].self, decoder: JSONDecoder())
+        .replaceError(with: [])
+        .receive(on: DispatchQueue.main)
+        .sink(receiveValue: parseNearbyStops)
+    }
   }
 
   public func deleteStop(at indices: IndexSet) {
@@ -179,6 +189,18 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
       fetchState = .success
       stopName = Abbreviator.abbrv(result.stop.name)
       print(" Stop: \(result.stop.stopID) \(result.stop.name) (\(stopName))")
+    }
+  }
+
+  private func parseNearbyStops(result: [BusTrainStop]) {
+    if result.count == 0 {
+      // fetch error!
+      fetchState = .failed
+      nearbyStops = []
+    } else {
+      // fetch succeeded!
+      nearbyStops = result
+      fetchState = .success
     }
   }
 

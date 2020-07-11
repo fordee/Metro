@@ -202,7 +202,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         serviceTime = CLKTimeTextProvider(date: firstServiceDate)
         serviceTime?.tintColor = UIColor(#colorLiteral(red: 0.9834979177, green: 0.05861451477, blue: 0.3534923792, alpha: 1))
 
-        serviceTimeRelative = CLKRelativeDateTextProvider(date: firstServiceDate, style: .natural, units: [.minute])//CLKTimeTextProvider(date: firstServiceDate)
+        serviceTimeRelative = CLKRelativeDateTextProvider(date: firstServiceDate, style: .natural, units: [.hour, .minute])
         serviceTimeRelative?.tintColor = UIColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1))
       }
       //print("serviceTime: \(String(describing: serviceTime?.date))")
