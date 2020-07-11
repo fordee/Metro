@@ -28,7 +28,7 @@ struct AvailableRoutesListView: View {
         }
         .onTapGesture {
           print("Tapped: \(route.routeShortName)")
-          metroData.favoriteRoutes.append(route)
+          metroData.addRoute(route)
           presentation.wrappedValue.dismiss()
         }
       }

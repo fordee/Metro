@@ -30,8 +30,12 @@ public struct BusTrainService: Codable, Identifiable, Equatable {
     self.departureStatus = "On Time"
   }
 
+  public var departureTime: String {
+    expectedDeparture ?? aimedArrival
+  }
+
   public var id: String {
-    serviceID + "-" + aimedArrival
+    serviceID + "-" + departureTime
   }
 }
 

@@ -27,7 +27,7 @@ struct ServicesListView: View {
             .padding(.bottom, 8)
         }
       }
-      .onDelete { metroData.deleteService(at: $0) }
+      .onDelete { metroData.deleteRoute(at: $0) }
       .listRowPlatterColor(Color(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)))
       NavigationLink(destination: AvailableRoutesListView().environmentObject(metroData)) {
         HStack {

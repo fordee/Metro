@@ -34,7 +34,7 @@ struct ServiceRowView: View {
         }
         VStack(alignment: .leading) {
           HStack {
-            Text(getTimeFromDateString(from: service.expectedDeparture ?? service.aimedArrival + "a"))
+            Text(getTimeFromDateString(from: service.departureTime))
               .foregroundColor(Color.white)
               .font(.system(size: 24 * multiplier))
               .fontWeight(.bold)

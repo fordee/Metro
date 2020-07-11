@@ -48,7 +48,7 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
   public func firstServiceDate(fromDate: Date, stopID: String) -> Date? {
     if let departures = departureDetails[stopID] {
       for service in filterBy(serviceIDs: favoriteRoutes, services: departures) {
-        if let serviceDate = service.aimedArrival.converStringToDate() {
+        if let serviceDate = service.departureTime.converStringToDate() {
           if serviceDate > fromDate {
             print("serviceDate: \(serviceDate), fromDate: \(fromDate)")
             return serviceDate
@@ -115,11 +115,25 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     }
   }
 
-  public func deleteStop(at indices: IndexSet) {
-    indices.forEach { favouriteStops.remove(at: $0) }
+  // MARK: Stops
+  public func addStop(_ stop: BusTrainStop) {
+    if !(favouriteStops.map { $0.stopID }.contains(stop.stopID)) {
+      favouriteStops.append(stop)
+      CLKComplicationServer.sharedInstance().reloadComplicationDescriptors() // Reload complications because a new stop exists
+    }
   }
 
-  public func deleteService(at indices: IndexSet) {
+  public func deleteStop(at indices: IndexSet) {
+    indices.forEach { favouriteStops.remove(at: $0) }
+    CLKComplicationServer.sharedInstance().reloadComplicationDescriptors() // Reload complications because a stop is deleted
+  }
+
+  // MARK: Routes
+  public func addRoute(_ route: Route) {
+    favoriteRoutes.append(route)
+  }
+
+  public func deleteRoute(at indices: IndexSet) {
     indices.forEach { favoriteRoutes.remove(at: $0) }
   }
 
@@ -189,6 +203,7 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
       fetchState = .success
       stopName = Abbreviator.abbrv(result.stop.name)
       print(" Stop: \(result.stop.stopID) \(result.stop.name) (\(stopName))")
+      
     }
   }
 

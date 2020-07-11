@@ -52,7 +52,7 @@ struct SettingsView_Previews: PreviewProvider {
 }
 
 enum SettingsType: String {
-  case services = "Favourite Services"
+  case services = "Favourite Routes"
   case stops = "Favourite Stops"
 }
 

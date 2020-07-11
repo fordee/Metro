@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ClockKit
 
 struct SelectStopView: View {
   // Access the shared model object.
@@ -56,9 +57,7 @@ struct SelectStopView: View {
           print("Tapped \(stopNumber)...!")
           //metroData.fetchData(for: stopNumber, displayAllStops: false)
           let stop = BusTrainStop(stopID: stopNumber, name: metroData.stopName)
-          if !(metroData.favouriteStops.map { $0.stopID }.contains(stop.stopID)) {
-            metroData.favouriteStops.append(stop)
-          }
+          metroData.addStop(stop)                                                                     // TODO: Put this into MetroData
           presentation.wrappedValue.dismiss()
         }
         label: {
