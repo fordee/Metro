@@ -63,7 +63,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
       var descriptors: [CLKComplicationDescriptor] = []
       var dataDict: Dictionary<AnyHashable, Any> = [:]
 
-      for stop in data.stops {
+      for stop in data.favouriteStops {
         dataDict = ["name": stop.name, "id": stop.stopID]
         let descriptor = CLKComplicationDescriptor(identifier: String(stop.stopID),
                                                    displayName: stop.name,

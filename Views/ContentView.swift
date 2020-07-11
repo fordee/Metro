@@ -21,7 +21,7 @@ struct ContentView: View {
   var body: some View {
     VStack {
       Picker(selection: $currentStop, label: EmptyView()) {
-        ForEach(metroData.stops) { stop in
+        ForEach(metroData.favouriteStops) { stop in
           Text("\(stop.name)")
             .font(.caption2)
             .tag(stop.stopID)

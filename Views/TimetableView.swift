@@ -34,7 +34,7 @@ struct TimetableView: View {
     .toolbar {
       Button {
         print("Tapped...!")
-        metroData.fetchData(for: stop, displayAllStops: displayAllStops)
+        metroData.fetchDepartureData(for: stop, displayAllStops: displayAllStops)
       }
       label: {
         HStack {
@@ -47,7 +47,7 @@ struct TimetableView: View {
     }
     .onAppear {
       print(stop)
-      metroData.fetchData(for: stop, displayAllStops: displayAllStops)
+      metroData.fetchDepartureData(for: stop, displayAllStops: displayAllStops)
     }
   }
 }
