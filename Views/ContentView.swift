@@ -13,18 +13,22 @@ struct ContentView: View {
   @AppStorage("currentStop") private var currentStop = "3546"
   @AppStorage("displayAllStops") private var displayAllStops = false
 
+  //@EnvironmentObject var metroData: MetroData
+
   // Access the shared model object.
-  let data = MetroData.shared
+  let metroData = MetroData.shared
 
   var body: some View {
     VStack {
       Picker(selection: $currentStop, label: EmptyView()) {
-        ForEach(data.stops) { stop in
-          Text("\(stop.stopName)").tag(stop.stopNumber)
+        ForEach(metroData.stops) { stop in
+          Text("\(stop.name)")
+            .font(.caption2)
+            .tag(stop.stopID)
         }
       }
       .frame(minHeight: 44, maxHeight: 44)
-      NavigationLink(destination: TimetableView(stop: currentStop, displayAllStops: displayAllStops).environmentObject(data)) {
+      NavigationLink(destination: TimetableView(stop: currentStop, displayAllStops: displayAllStops).environmentObject(metroData)) {
         //Label("Timetable", systemImage: "bus")//"arrow.counterclockwise.circle")
         HStack {
           Image(systemName: "bus")
@@ -38,7 +42,7 @@ struct ContentView: View {
       }
       .padding(4)
       HStack {
-        NavigationLink(destination: SettingsView()) {
+        NavigationLink(destination: SettingsView().environmentObject(metroData)) {
           Image(systemName: "gearshape")
             .imageScale(.large)
             .padding(.horizontal, 8)

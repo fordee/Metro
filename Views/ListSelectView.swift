@@ -10,14 +10,15 @@ import SwiftUI
 
 struct ListSelectView: View {
   let selectionType: SettingsType
-
+  @EnvironmentObject var metroData: MetroData
+  
   var body: some View {
     Group {
       switch selectionType {
         case .services:
-          ServicesListView()
+          ServicesListView().environmentObject(metroData)
         case .stops:
-          StopsListView()
+          StopsListView().environmentObject(metroData)
       }
     }
 

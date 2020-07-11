@@ -75,14 +75,35 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
   @Published public var fetchState: FetchState = FetchState.fetching
   @Published public var request: AnyCancellable?
 
-  @Published public var stops: [MetStop] = [
-    MetStop(stopNumber: "3546", stopName: "Newlands Road"),
-    MetStop(stopNumber: "5016", stopName: "Wellington Stn"),
-    MetStop(stopNumber: "5014", stopName: "Lambton Quay"),
-    MetStop(stopNumber: "5012", stopName: "Farmers"),
-    MetStop(stopNumber: "5010", stopName: "Cable Car Ln"),
-    MetStop(stopNumber: "5008", stopName: "Willis St"),
-  ]
+  @Published public var stopName: String = ""
+
+  @Published public var stops: [BusTrainStop] = [] {
+    didSet {
+      saveUserStops()
+    }
+  }
+
+// 3546, name: "Newlands Road"
+// 5016, name: "Wellington Stn"
+// 5014, name: "Lambton Quay"
+// 5012, name: "Farmers"
+// 5010, name: "Cable Car Ln"
+// 5008, name: "Willis St"
+
+
+  @Published public var favoriteRoutes: [Route] = [] {
+    didSet {
+      saveUserRoutes()
+    }
+  }
+
+  // User Preferences Data
+  let stopsFile: URL = FileManager.documentDirectory
+    .appendingPathComponent("Stops")
+    .appendingPathExtension("txt")
+  let routesFile: URL = FileManager.documentDirectory
+    .appendingPathComponent("Routes")
+    .appendingPathExtension("txt")
 
   private var displayAllStops = false
 
@@ -90,18 +111,20 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     indices.forEach { stops.remove(at: $0) }
   }
 
-  let favoriteServices: [Route] = [
-    Route(routeId: 520, agencyId: "MNM", routeShortName: "52", routeLongName: "Johnsonville - Newlands - Wellington", routeType:   3, routeColor: "6cace4", routeTextColor: "0"),
-    Route(routeId: 560, agencyId: "MNM", routeShortName: "56", routeLongName: "Johnsonville - Paparangi - Wellington", routeType:   3, routeColor: "636466", routeTextColor: "ffffff"),
-    Route(routeId: 570, agencyId: "MNM", routeShortName: "57", routeLongName: "Woodridge - Wellington", routeType:   3, routeColor: "636466", routeTextColor: "ffffff"),
-    Route(routeId: 580, agencyId: "MNM", routeShortName: "58", routeLongName: "Newlands - Wellington", routeType:   3, routeColor: "636466", routeTextColor: "ffffff"),
-  ]
+  func deleteService(at indices: IndexSet) {
+    indices.forEach { favoriteRoutes.remove(at: $0) }
+  }
   // MARK: - Private Methods
 
   // The model's initializer. Do not call this method.
   // Use the shared instance instead.
   private override init() {
     super.init()
+
+    // Load user routes and stops
+    loadUserStops()
+    loadUserRoutes()
+
     // Begin loading the data from disk.
     fetchAllData()
 
@@ -117,9 +140,53 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     }
   }
 
+  public func loadUserStops() {
+    let decoder = JSONDecoder()
+
+    do {
+      let data = try Data(contentsOf: stopsFile)
+      stops = try decoder.decode([BusTrainStop].self, from: data)
+    } catch let error {
+      print(error)
+    }
+  }
+
+  public func loadUserRoutes() {
+    let decoder = JSONDecoder()
+
+    do {
+      let data = try Data(contentsOf: routesFile)
+      favoriteRoutes = try decoder.decode([Route].self, from: data)
+    } catch let error {
+      print(error)
+    }
+  }
+
+  public func saveUserStops() {
+    let encoder = JSONEncoder()
+
+    do {
+      let data = try encoder.encode(stops)
+      try data.write(to: stopsFile, options: .atomicWrite)
+    } catch let error {
+      print(error)
+    }
+  }
+
+  public func saveUserRoutes() {
+    let encoder = JSONEncoder()
+
+    do {
+      let data = try encoder.encode(favoriteRoutes)
+      try data.write(to: routesFile, options: .atomicWrite)
+    } catch let error {
+      print(error)
+    }
+  }
+
   public func firstServiceDate(fromDate: Date, stopID: String) -> Date? {
     if let departures = departureDetails[stopID] {
-      for service in filterBy(serviceIDs: favoriteServices, services: departures) {
+      for service in filterBy(serviceIDs: favoriteRoutes, services: departures) {
         if let serviceDate = service.aimedArrival.converStringToDate() {
           if serviceDate > fromDate {  
             print("serviceDate: \(serviceDate), fromDate: \(fromDate)")
@@ -165,52 +232,79 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     }
   }
 
-  func stopDataPublisher(for stop: String) -> AnyPublisher<DepartureDetails, Never> {
-    let url = URL(string: "https://www.metlink.org.nz/api/v1/StopDepartures/" + stop)!
-    return URLSession.shared.dataTaskPublisher(for: url)
-      .map(\.data)
-      .decode(type: DepartureDetails.self, decoder: JSONDecoder())
-      .replaceError(with: DepartureDetails())
-      .eraseToAnyPublisher()
-
+  func fetchStopName(for stop: String) {
+    if let url = URL(string: "https://www.metlink.org.nz/api/v1/StopDepartures/" + stop) {
+      print("Stop: \(stop)")
+      fetchState = .fetching
+      request = URLSession.shared.dataTaskPublisher(for: url)
+        .map(\.data)
+        .decode(type: DepartureDetails.self, decoder: JSONDecoder())
+        .replaceError(with: DepartureDetails())
+        .receive(on: DispatchQueue.main)
+        .sink(receiveValue: parseStopName)
+    }
   }
 
-  func parse(result: DepartureDetails) {
-    if result.services.count == 0 {
-      // fetch error!
-      fetchState = .failed
-    } else {
-      // fetch succeeded!
-      fetchState = .success
+    // https://www.metlink.org.nz/api/v1/StopNearby/-41.3431194/174.7706202
 
-      if displayAllStops {
-        services = result.services
+    func stopDataPublisher(for stop: String) -> AnyPublisher<DepartureDetails, Never> {
+      let url = URL(string: "https://www.metlink.org.nz/api/v1/StopDepartures/" + stop)!
+      return URLSession.shared.dataTaskPublisher(for: url)
+        .map(\.data)
+        .decode(type: DepartureDetails.self, decoder: JSONDecoder())
+        .replaceError(with: DepartureDetails())
+        .eraseToAnyPublisher()
+    }
+
+    func parse(result: DepartureDetails) {
+      if result.services.count == 0 {
+        // fetch error!
+        fetchState = .failed
       } else {
-        services = filterBy(serviceIDs: favoriteServices, services: result.services)
-      }
-      departureDetails[result.stop.stopID] = result.services
-      print(" Stop: \(result.stop.stopID) count: \(result.services.count)")
-    }
-  }
+        // fetch succeeded!
+        fetchState = .success
 
-  private func filterBy(serviceIDs: [Route], services: [BusTrainService]) -> [BusTrainService] {
-    let filteredServices = services.filter {
-      for serviceID in serviceIDs {
-        if $0.serviceID == serviceID.routeShortName {
-          return true
+        if displayAllStops {
+          services = result.services
+        } else {
+          services = filterBy(serviceIDs: favoriteRoutes, services: result.services)
         }
+        departureDetails[result.stop.stopID] = result.services
+        print(" Stop: \(result.stop.stopID) \(stopName) count: \(result.services.count)")
       }
-      return false
     }
-    return filteredServices
-  }
 
-  // The deinitializer for the model object.
-  deinit {
-    // Cancel the observer.
-    updateSink.cancel()
+    func parseStopName(result: DepartureDetails) {
+      if result.services.count == 0 {
+        // fetch error!
+        fetchState = .failed
+        stopName = ""
+      } else {
+        // fetch succeeded!
+        fetchState = .success
+        stopName = Abbreviator.abbrv(result.stop.name) 
+        print(" Stop: \(result.stop.stopID) \(result.stop.name) (\(stopName))")
+      }
+    }
+
+    private func filterBy(serviceIDs: [Route], services: [BusTrainService]) -> [BusTrainService] {
+      let filteredServices = services.filter {
+        for serviceID in serviceIDs {
+          if $0.serviceID == serviceID.routeShortName {
+            return true
+          }
+        }
+        return false
+      }
+      return filteredServices
+    }
+
+    // The deinitializer for the model object.
+    deinit {
+      // Cancel the observer.
+      updateSink.cancel()
+    }
   }
-}
 
 
 

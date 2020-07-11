@@ -16,7 +16,7 @@ struct ServiceRowView: View {
 
   var body: some View {
     let multiplier = size / 44
-    let color = metroData.favoriteServices.map { $0.routeShortName }.contains(service.serviceID) ? #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1) : #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+    let color = metroData.favoriteRoutes.map { $0.routeShortName }.contains(service.serviceID) ? #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1) : #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
 
     return HStack {
       HStack(alignment: .center, spacing: 4.0 * multiplier) {

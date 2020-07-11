@@ -14,10 +14,13 @@ let settingsOptions = [
 ]
 
 struct SettingsView: View {
+
+  @EnvironmentObject var metroData: MetroData
+  
   var body: some View {
     List {
       ForEach(settingsOptions) { option in
-        NavigationLink(destination: ListSelectView(selectionType: option.type)) {
+        NavigationLink(destination: ListSelectView(selectionType: option.type).environmentObject(metroData)) {
           SettingCell(option: option)
             .frame(height: 80.0)
         }

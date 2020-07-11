@@ -9,15 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct MetStop: Identifiable {
-  var id: String {
-    stopNumber
-  }
-  let stopNumber: String
-  let stopName: String
-}
-
-public struct BusTrainService: Decodable, Identifiable, Equatable {
+public struct BusTrainService: Codable, Identifiable, Equatable {
   public enum CodingKeys: String, CodingKey {
     case serviceID = "ServiceID"
     case aimedArrival = "AimedArrival"
@@ -43,21 +35,26 @@ public struct BusTrainService: Decodable, Identifiable, Equatable {
   }
 }
 
-struct BusTrainStop: Decodable {
+struct BusTrainStop: Codable, Identifiable {
   public enum CodingKeys: String, CodingKey {
-    case name = "Name"
     case stopID = "Sms"
+    case name = "Name"
   }
-  let name: String
-  let stopID: String
 
-  init(name: String, stopID: String) {
-    self.name = name
+  var id: String {
+    stopID
+  }
+  
+  let stopID: String
+  let name: String
+
+  init(stopID: String, name: String) {
     self.stopID = stopID
+    self.name = name
   }
 }
 
-public struct DepartureDetails: Decodable, Equatable {
+public struct DepartureDetails: Codable, Equatable {
   public static func == (lhs: DepartureDetails, rhs: DepartureDetails) -> Bool {
     return lhs.lastModified < rhs.lastModified
   }
@@ -73,7 +70,7 @@ public struct DepartureDetails: Decodable, Equatable {
 
   init() {
     lastModified = ""
-    stop = BusTrainStop.init(name: "", stopID: "")
+    stop = BusTrainStop.init(stopID: "", name: "")
     services = []
   }
 }

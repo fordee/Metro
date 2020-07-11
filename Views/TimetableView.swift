@@ -32,11 +32,11 @@ struct TimetableView: View {
       }
     }
     .toolbar {
-      Button(action: {
+      Button {
         print("Tapped...!")
         metroData.fetchData(for: stop, displayAllStops: displayAllStops)
-      }) {
-        //Label("Refresh", systemImage: "arrow.counterclockwise.circle")
+      }
+      label: {
         HStack {
           Image(systemName: "arrow.counterclockwise.circle")
             .imageScale(.large)
