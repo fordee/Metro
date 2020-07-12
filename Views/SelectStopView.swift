@@ -30,7 +30,7 @@ struct SelectStopView: View {
           case .fetching:
             Text("Fetching...")
           case .success:
-            Text(metroData.stopName)
+            Text(metroData.stop.name)
         }
       }
       .frame(maxHeight: 60, alignment: .leading)
@@ -38,7 +38,7 @@ struct SelectStopView: View {
         Button {
           let stopNumber = String(Int(digit1)) + String(Int(digit2)) + String(Int(digit3)) + String(Int(digit4))
           print("Tapped \(stopNumber)...!")
-          metroData.fetchStopName(for: stopNumber)
+          metroData.fetchStop(for: stopNumber)
         }
         label: {
           VStack {
@@ -56,8 +56,8 @@ struct SelectStopView: View {
           let stopNumber = String(Int(digit1)) + String(Int(digit2)) + String(Int(digit3)) + String(Int(digit4))
           print("Tapped \(stopNumber)...!")
           //metroData.fetchData(for: stopNumber, displayAllStops: false)
-          let stop = BusTrainStop(stopID: stopNumber, name: metroData.stopName)
-          metroData.addStop(stop)                                                                     // TODO: Put this into MetroData
+          let stop = metroData.stop
+          metroData.addStop(stop)   // TODO: !
           presentation.wrappedValue.dismiss()
         }
         label: {
@@ -74,7 +74,7 @@ struct SelectStopView: View {
         .cornerRadius(22.0)
       }
     }.onAppear {
-      metroData.stopName = ""
+      metroData.stop.name = ""
     }
   }
 }

@@ -43,6 +43,8 @@ struct BusTrainStop: Codable, Identifiable {
   public enum CodingKeys: String, CodingKey {
     case stopID = "Sms"
     case name = "Name"
+    case latitude = "Lat"
+    case longitude = "Long"
   }
 
   var id: String {
@@ -50,11 +52,15 @@ struct BusTrainStop: Codable, Identifiable {
   }
   
   let stopID: String
-  let name: String
+  var name: String
+  let latitude: Double
+  let longitude: Double
 
-  init(stopID: String, name: String) {
+  init(stopID: String, name: String, latitude: Double, longitude: Double) {
     self.stopID = stopID
     self.name = name
+    self.latitude = latitude
+    self.longitude = longitude
   }
 }
 
@@ -74,7 +80,7 @@ public struct DepartureDetails: Codable, Equatable {
 
   init() {
     lastModified = ""
-    stop = BusTrainStop.init(stopID: "", name: "")
+    stop = BusTrainStop.init(stopID: "", name: "", latitude: -41.23335086, longitude: +174.81820100)
     services = []
   }
 }

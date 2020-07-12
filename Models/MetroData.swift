@@ -32,7 +32,7 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
   @Published public var departureDetails: Dictionary<String, [BusTrainService]> = [:]
   @Published public var services: [BusTrainService] = []
   @Published public var fetchState: FetchState = FetchState.fetching
-  @Published public var stopName: String = ""
+  @Published public var stop: BusTrainStop = BusTrainStop(stopID: "", name: "", latitude: 0.0, longitude: 0.0)
   @Published public var favouriteStops: [BusTrainStop] = [] {
     didSet {
       saveUserStops()
@@ -88,7 +88,7 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     }
   }
 
-  public func fetchStopName(for stop: String) {
+  public func fetchStop(for stop: String) {
     if let url = URL(string: "https://www.metlink.org.nz/api/v1/StopDepartures/" + stop) {
       print("Stop: \(stop)")
       fetchState = .fetching
@@ -97,7 +97,7 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
         .decode(type: DepartureDetails.self, decoder: JSONDecoder())
         .replaceError(with: DepartureDetails())
         .receive(on: DispatchQueue.main)
-        .sink(receiveValue: parseStopName)
+        .sink(receiveValue: parseStop)
     }
   }
 
@@ -189,20 +189,23 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
         services = filterBy(serviceIDs: favoriteRoutes, services: result.services)
       }
       departureDetails[result.stop.stopID] = result.services
-      print(" Stop: \(result.stop.stopID) \(stopName) count: \(result.services.count)")
+      print(" Stop: \(result.stop.stopID) \(String(describing: stop)) count: \(result.services.count)")
     }
   }
 
-  private func parseStopName(result: DepartureDetails) {
+  private func parseStop(result: DepartureDetails) {
     if result.services.count == 0 {
       // fetch error!
       fetchState = .failed
-      stopName = ""
+      stop = BusTrainStop(stopID: "", name: "", latitude: 0.0, longitude: 0.0)
     } else {
       // fetch succeeded!
       fetchState = .success
-      stopName = Abbreviator.abbrv(result.stop.name)
-      print(" Stop: \(result.stop.stopID) \(result.stop.name) (\(stopName))")
+      stop = result.stop
+      stop.name = Abbreviator.abbrv(result.stop.name)
+      //let stopName = Abbreviator.abbrv(result.stop.name)
+
+      print(" Stop: \(result.stop.stopID) \(result.stop.name) (\(String(describing: stop)))")
       
     }
   }
