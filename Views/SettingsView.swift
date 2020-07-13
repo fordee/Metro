@@ -24,7 +24,7 @@ struct SettingsView: View {
           SettingCell(option: option)
             .frame(height: 80.0)
         }
-        .listRowPlatterColor(Color(option.color))
+        .listItemTint(Color(option.color))
       }
     }
   }

@@ -28,7 +28,7 @@ struct ServicesListView: View {
         }
       }
       .onDelete { metroData.deleteRoute(at: $0) }
-      .listRowPlatterColor(Color(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)))
+      .listItemTint(Color(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)))
       NavigationLink(destination: AvailableRoutesListView().environmentObject(metroData)) {
         HStack {
           Image(systemName: "bus")
@@ -37,7 +37,7 @@ struct ServicesListView: View {
           Text("Add New")
         }
       }
-      .listRowPlatterColor(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
+      .listItemTint(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
     }
     //.padding(.bottom, 20)
   }

@@ -29,7 +29,7 @@ struct NearbyStopView: View {
               .font(Font.system(size: 15.0, design: .rounded))
               .padding(.bottom, 8)
           }
-          .listRowPlatterColor(Color(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)))
+          .listItemTint(Color(#colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)))
           .onTapGesture {
             print("Tapped: \(stop.stopID)")
             metroData.addStop(stop)
@@ -44,7 +44,7 @@ struct NearbyStopView: View {
               Text("Show Map")
             }
           }
-          .listRowPlatterColor(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
+          .listItemTint(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
         }
 
       }

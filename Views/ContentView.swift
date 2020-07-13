@@ -48,6 +48,7 @@ struct ContentView: View {
             .padding(.horizontal, 8)
             .foregroundColor(.purple)
         }
+        .buttonStyle(PlainButtonStyle())
         .frame(width: 22, height: 20, alignment: .center)
         .padding(.horizontal, 8)
         .padding(.top, 8)
