@@ -33,16 +33,18 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
   @Published public var services: [BusTrainService] = []
   @Published public var fetchState: FetchState = FetchState.fetching
   @Published public var stop: BusTrainStop = BusTrainStop(stopID: "", name: "", latitude: 0.0, longitude: 0.0)
-  @Published public var favouriteStops: [BusTrainStop] = [] {
+  @Published public var favouriteStops: [BusTrainStop] = [BusTrainStop(stopID: "3546", name: "Newlands Road at SalFord Street", latitude: -41.2290642, longitude: 174.8183648)] {
     didSet {
       saveUserStops()
     }
   }
-  @Published public var favoriteRoutes: [Route] = [] {
+
+  @Published public var favoriteRoutes: [Route] = [Route(routeId: 520, agencyId: "MNM", routeShortName: "52", routeLongName: "Johnsonville - Newlands - Wellington", routeType:   3, routeColor: "6cace4", routeTextColor: "000000")] {
     didSet {
       saveUserRoutes()
     }
   }
+
   @Published public var nearbyStops: [BusTrainStop] = []
 
   public func firstServiceDate(fromDate: Date, stopID: String) -> Date? {
@@ -153,7 +155,7 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
     loadUserRoutes()
     // Fetch Departure Data.
     fetchAllData()
-    // Add a subscriber to currentDrinks that responds whenever currentDrinks changes.
+    
     updateSink = $departureDetails.sink { _ in
       // Update any complications on active watch faces.
       let server = CLKComplicationServer.sharedInstance()
@@ -189,7 +191,7 @@ class MetroData: NSObject, ObservableObject, URLSessionDownloadDelegate {
         services = filterBy(serviceIDs: favoriteRoutes, services: result.services)
       }
       departureDetails[result.stop.stopID] = result.services
-      print(" Stop: \(result.stop.stopID) \(String(describing: stop)) count: \(result.services.count)")
+      print(" Stop: \(result.stop.stopID) \(String(describing: result.stop)) count: \(result.services.count)")
     }
   }
 

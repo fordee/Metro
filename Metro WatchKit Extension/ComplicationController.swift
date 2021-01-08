@@ -68,7 +68,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let descriptor = CLKComplicationDescriptor(identifier: String(stop.stopID),
                                                    displayName: stop.name,
                                                    supportedFamilies: [CLKComplicationFamily.graphicCorner
-                                                                     //, CLKComplicationFamily.graphicCircular
+                                                                     , CLKComplicationFamily.graphicCircular
                                                    ],
                                                    userInfo: dataDict)
         descriptors.append(descriptor)
@@ -120,9 +120,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 
       for service in services {
         let date = service.departureTime.converStringToDate()! // TODO remove !
-        let entry = createTimelineEntry(forComplication: complication, date: date)
-        entries.append(entry)
-        print("\(stopID) Timeline entry for \(date) for complication: \(complication.userInfo!["id"]!)")
+        if let entry = createTimelineEntry(forComplication: complication, date: date) {
+          entries.append(entry)
+          print("\(stopID) Timeline entry for \(date) for complication: \(complication.userInfo!["id"]!)")
+        }
       }
 
       handler(entries)
@@ -141,17 +142,18 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Private Methods
 
     // Return a timeline entry for the specified complication and date.
-    private func createTimelineEntry(forComplication complication: CLKComplication, date: Date) -> CLKComplicationTimelineEntry {
-
-        // Get the correct template based on the complication.
-        let template = createTemplate(forComplication: complication, date: date)
-
+    private func createTimelineEntry(forComplication complication: CLKComplication, date: Date) -> CLKComplicationTimelineEntry? {
+     // Get the correct template based on the complication.
+      if let template = createTemplate(forComplication: complication, date: date) {
         // Use the template and date to create a timeline entry.
         return CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
+      } else {
+        return nil
+      }
     }
 
     // Select the correct template based on the complication's family.
-    private func createTemplate(forComplication complication: CLKComplication, date: Date) -> CLKComplicationTemplate {
+    private func createTemplate(forComplication complication: CLKComplication, date: Date) -> CLKComplicationTemplate? {
         switch complication.family {
   //      case .modularSmall:
   //          return createModularSmallTemplate(forDate: date)
@@ -180,7 +182,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
   //              fatalError("Graphic Extra Large template is only available on watchOS 7.")
   //          }
         default:
-          fatalError("*** Unknown Complication Family ***")
+          return nil
+          //fatalError("*** Unknown Complication Family ***")
         }
     }
 
@@ -223,22 +226,19 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     private func createGraphicCircleTemplate(forDate date: Date) -> CLKComplicationTemplate {
         // Create the data providers.
       let percentage = Float(0.5)
-        let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
-                                                   gaugeColors: [.green, .yellow, .red],
-                                                   gaugeColorLocations: [0.0, 300.0 / 500.0, 450.0 / 500.0] as [NSNumber],
-                                                   fillFraction: percentage)
-  //
-      let mgCaffeineProvider = CLKRelativeDateTextProvider(date: Date(), style: .naturalAbbreviated, units: [.minute])//CLKSimpleTextProvider(text: "13:32")
-  //      let mgUnitProvider = CLKSimpleTextProvider(text: "mg Caffeine", shortText: "mg")
-  //      mgUnitProvider.tintColor = data.color(forCaffeineDose: data.mgCaffeine(atDate: date))
+      let gaugeProvider = CLKSimpleGaugeProvider(style: .fill,
+                                                 gaugeColors: [.green, .yellow, .red],
+                                                 gaugeColorLocations: [0.0, 300.0 / 500.0, 450.0 / 500.0] as [NSNumber],
+                                                 fillFraction: percentage)
+
+      //let busTimeProvider = CLKRelativeDateTextProvider(date: Date(), style: .naturalAbbreviated, units: [.minute])//CLKSimpleTextProvider(text: "13:32")
+      let timeProvider = CLKTimeTextProvider(date: Date())
 
         // Create the template using the providers.
         //let template = CLKComplicationTemplateGraphicCircularView(CircularComplicationView())
-      let template = CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText(gaugeProvider: gaugeProvider, bottomTextProvider: CLKSimpleTextProvider(text: "mg"), centerTextProvider: mgCaffeineProvider)
-        template.gaugeProvider = gaugeProvider
-        //template.centerTextProvider = mgCaffeineProvider
-        //template.bottomTextProvider = CLKSimpleTextProvider(text: "mg")
-        return template
+      let template = CLKComplicationTemplateGraphicCircularOpenGaugeSimpleText(gaugeProvider: gaugeProvider, bottomTextProvider: CLKSimpleTextProvider(text: "min"), centerTextProvider: timeProvider)
+      template.gaugeProvider = gaugeProvider
+      return template
     }
 
     
